@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "pika-web",
+    "start": "serve ./",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@pika/web": "^0.4.3",
+    "serve": "^11.0.2",
+    "jest": "^24.8.0"
+  },
+  "dependencies": {
+
+  }
+}
