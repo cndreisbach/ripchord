@@ -1,23 +1,34 @@
-/* If you're feeling fancy you can add interactivity
-    to your site with Javascript */
 
 import { majorProgressions, ChordProgressionGenerator, toTonalRoman } from './chords.js'
 import { fromRomanNumerals } from './web_modules/@tonaljs/progression.js'
 
-const q = sel => document.querySelector(sel)
+import Vue from './node_modules/vue/dist/vue.esm.browser.js'
 
-document.querySelector('#make-chords').addEventListener('click', function () {
-  const cg = new ChordProgressionGenerator(majorProgressions)
-  const numChordsInSeq = Math.floor(Math.random() * 4) + 3
-  const key = q('#pick-key').value
-
-  for (let i = 0; i < numChordsInSeq; i++) {
-    cg.nextChord()
+const ChordWidget = new Vue({
+  el: '#chord-widget',
+  data: {
+    key: '-',
+    keys: ['-', 'A', 'B', 'C', 'D', 'E', 'F', 'G'],
+    progressions: []
+  },
+  computed: {
+    progressionsInKey: function () {
+      if (this.key === '-') {
+        return this.progressions.map(p => p.join("-"))
+      } else {
+        return this.progressions.map(p => fromRomanNumerals(this.key, p).join("-"))
+      }
+    }
+  },
+  methods: {
+    generateProgression: function () {
+      const cg = new ChordProgressionGenerator(majorProgressions)
+      const numChordsInSeq = Math.floor(Math.random() * 4) + 3
+      for (let i = 0; i < numChordsInSeq; i++) {
+        cg.nextChord()
+      }
+      // const chords = fromRomanNumerals(this.key, cg.history.map(toTonalRoman))
+      this.progressions.push(cg.history.map(toTonalRoman))
+    },
   }
-
-  let output = document.createElement('p')
-  let chords = fromRomanNumerals(key, cg.history.map(toTonalRoman))
-  output.innerText = chords.join('-')
-
-  document.querySelector('#chords').appendChild(output)
 })

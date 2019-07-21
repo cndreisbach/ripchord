@@ -17,26 +17,26 @@
 
 <body>
   <div class="sans-serif mw8 center">
-    <h1>Ripchord</h1>
-    <main>
-      <div class="flex">
-        <div>
-          <label for="pick-key">Pick a key</label>
-          <select id="pick-key">
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-            <option>E</option>
-            <option>F</option>
-            <option>G</option>
-          </select>
+    <h1 class="mh4">Ripchord</h1>
+    <main class="mv3 mh4">
+      <div id="chord-widget">
+        <div class="flex">
+          <div class="pr2">
+            <label for="pick-key">Pick a key</label>
+            <select id="pick-key" v-model="key">
+              <option v-for="key in keys">{{ key }}</option>              
+            </select>
+          </div>
+          <div>
+            <button id="make-chords" v-on:click="generateProgression">Generate a chord progression</button>
+          </div>
         </div>
-        <div>
-          <button id="make-chords">Generate a chord progression</button>
+        <div id="chords">
+          <p v-for="progression in progressionsInKey">
+            {{ progression }}
+          </p>
         </div>
-      </div>
-      <div id="chords"></div>
+      </div>      
     </main>
   </div>
 </body>
