@@ -1,16 +1,18 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "pika-web",
-    "start": "serve ./",
-    "test": "jest"
+    "start": "serve ./"
   },
   "devDependencies": {
     "@pika/web": "^0.4.3",
-    "serve": "^11.0.2",
-    "jest": "^24.8.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "serve": "^11.0.2"
   },
   "dependencies": {
-
+    "@tonaljs/progression": "^3.2.1",
+    "hyperscript": "^2.0.2"
   }
 }
