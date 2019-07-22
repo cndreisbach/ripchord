@@ -12,8 +12,10 @@
     "serve": "^11.0.2"
   },
   "dependencies": {
+    "@tonaljs/chord": "^3.2.1",
     "@tonaljs/progression": "^3.2.1",
     "hyperscript": "^2.0.2",
+    "tone": "^13.4.9",
     "vue": "^2.6.10"
   }
 }

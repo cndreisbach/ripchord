@@ -34,6 +34,7 @@
         <div id="chords">
           <p v-for="progression in progressionsInKey">
             {{ progression }}
+            <button v-on:click="playProgression(progression)">Play</button>
           </p>
         </div>
       </div>      
