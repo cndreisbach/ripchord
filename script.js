@@ -1,11 +1,11 @@
 
-import { majorProgressions, ChordProgressionGenerator, toTonalRoman } from './chords.js'
-import { fromRomanNumerals } from '@tonaljs/progression'
-import { chord } from '@tonaljs/chord'
-import Vue from 'vue'
+const chords = require('./chords.js')
+const tonalProgression = require('@tonaljs/progression')
+const chord = require('@tonaljs/chord')
+const Vue = require('vue')
 
 function convertProgressionToKey (progression, key) {
-  return fromRomanNumerals(key, progression)
+  return tonalProgression.fromRomanNumerals(key, progression)
 }
 
 const ChordWidget = new Vue({
@@ -26,17 +26,17 @@ const ChordWidget = new Vue({
   },
   methods: {
     generateProgression: function () {
-      const cg = new ChordProgressionGenerator(majorProgressions)
+      const cg = new chords.ChordProgressionGenerator(chords.majorProgressions)
       const numChordsInSeq = Math.floor(Math.random() * 4) + 3
       for (let i = 0; i < numChordsInSeq; i++) {
         cg.nextChord()
       }
-      // const chords = fromRomanNumerals(this.key, cg.history.map(toTonalRoman))
-      this.progressions.push(cg.history.map(toTonalRoman))
+
+      this.progressions.push(cg.history.map(chords.toTonalRoman))
     },
 
     playProgression: function (progression) {
-      const chords = progression.split('-').map(p => chord(p))
+      const chords = progression.split('-').map(p => chord.chord(p))
       console.log(chords)
     }
   }

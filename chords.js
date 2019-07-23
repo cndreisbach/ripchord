@@ -1,4 +1,4 @@
-export const majorProgressions = {
+const majorProgressions = {
   'I': ['ii', 'iii', 'IV', 'V', 'vi', 'vii'],
   'ii': ['V', 'vii'],
   'iii': ['vi'],
@@ -8,7 +8,7 @@ export const majorProgressions = {
   'vii': ['I']
 }
 
-export const minorProgressions = {
+const minorProgressions = {
   'i': ['ii', 'III', 'iv', 'V', 'VI', 'vii'],
   'ii': ['V', 'vii'],
   'III': ['VI'],
@@ -22,14 +22,14 @@ function randomChoice (array) {
   return array[Math.floor(Math.random() * array.length)]
 }
 
-export function toTonalRoman (romanNumeral) {
+function toTonalRoman (romanNumeral) {
   if (romanNumeral.toLowerCase() === romanNumeral) {
     return romanNumeral.toUpperCase() + 'm'
   }
   return romanNumeral
 }
 
-export class ChordProgressionGenerator {
+class ChordProgressionGenerator {
   constructor (progressions) {
     this.progressions = progressions
     this.current = null
@@ -51,4 +51,11 @@ export class ChordProgressionGenerator {
 
     return this.current
   }
+}
+
+module.exports = {
+  majorProgressions: majorProgressions,
+  minorProgressions: minorProgressions,
+  toTonalRoman: toTonalRoman,
+  ChordProgressionGenerator: ChordProgressionGenerator
 }
