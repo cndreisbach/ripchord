@@ -1,8 +1,8 @@
 
 import { majorProgressions, ChordProgressionGenerator, toTonalRoman } from './chords.js'
-import { fromRomanNumerals } from './web_modules/@tonaljs/progression.js'
-import { chord } from './web_modules/@tonaljs/chord.js'
-import Vue from './node_modules/vue/dist/vue.esm.browser.js'
+import { fromRomanNumerals } from '@tonaljs/progression'
+import { chord } from '@tonaljs/chord'
+import Vue from 'vue'
 
 function convertProgressionToKey (progression, key) {
   return fromRomanNumerals(key, progression)
