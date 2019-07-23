@@ -38,7 +38,7 @@ class ChordProgressionGenerator {
 
   nextChord () {
     if (!this.current) {
-      if (Math.random() < 0.6) {
+      if (Math.random() < 0.8) {
         this.current = Object.keys(this.progressions)[0]
       } else {
         this.current = randomChoice(Object.keys(this.progressions))

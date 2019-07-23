@@ -8,6 +8,7 @@ function convertProgressionToKey (progression, key) {
   return tonalProgression.fromRomanNumerals(key, progression)
 }
 
+/* eslint-disable no-unused-vars */
 const ChordWidget = new Vue({
   el: '#chord-widget',
   data: {
@@ -17,11 +18,15 @@ const ChordWidget = new Vue({
   },
   computed: {
     progressionsInKey: function () {
-      if (this.key === '-') {
-        return this.progressions.map(p => p.join('-'))
-      } else {
-        return this.progressions.map(p => convertProgressionToKey(p, this.key).join('-'))
-      }
+      // if (this.key === '-') {
+      //   return this.progressions.map(p => p.join('-'))
+      // } else {
+      //   return this.progressions.map(p => convertProgressionToKey(p, this.key).join('-'))
+      // }
+
+      return this.key === '-'
+        ? this.progressions.map(p => p.join('-'))
+        : this.progressions.map(p => convertProgressionToKey(p, this.key).join('-'))
     }
   },
   methods: {
